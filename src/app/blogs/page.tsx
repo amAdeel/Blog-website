@@ -1,42 +1,45 @@
 "use client"
-import Card from '@/Components/Card'
-import React from 'react'
-import { useEffect , useState } from 'react'
+import Card from '@/Components/Card';
+import React, { useEffect, useState } from 'react';
 
-const Page = () => {
-    // now i want to create a function , i want when someone comes in my blog pagew then a api hit and fetch some data from there 
-    // now our function is complet but can't use it's ,, for this purpose we knopw that when ever we want some functionality on the time of rerending we use useEffect for that purpose , now we use a use effect and updating blog page according to fetching data .
-    const [getdate, setgetdate] = useState([])
-
-    useEffect(() => {
-        getblogdate()
-    },[])
-    // dependies hum ny empty rahk di mean k ya only one time click able ho ga first time blog page par jy gy to humari api target ho gi , or data show karva dy gi
-    
-
-    const getblogdate =async()=>{
-        const response = await fetch("https://jsonplaceholder.typicode.com/posts")
-        const date=await response.json()
-        setgetdate(date)
-        console.log(date)
-    }
-  return (
-    <div className='min-h-screen my-5 flex gap-8 first-line: flex-wrap md:first-line:flex-wrap sm:first-line:flex-wrap justify-center rounded-xl'>
-        {getdate.map((eachitems:any)=>{
-            return(
-                <Card postcard={eachitems} />
-            )
-        }
-        )}
-        
-    </div>
-  )
+// Define the type for a blog post
+interface Post {
+  userId: number;
+  id: number;
+  title: string;
+  body: string;
 }
 
-export default Page
+const Page = () => {
+  // State to hold the fetched data
+  const [getdate, setgetdate] = useState<Post[]>([]);
 
+  useEffect(() => {
+    // Fetch blog data on component mount
+    const getblogdate = async () => {
+      try {
+        const response = await fetch("https://jsonplaceholder.typicode.com/posts");
+        if (!response.ok) {
+          throw new Error('Failed to fetch data');
+        }
+        const data: Post[] = await response.json();
+        setgetdate(data);
+      } catch (error) {
+        console.error('Error fetching blog data:', error);
+        // Optionally, handle the error state here
+      }
+    };
 
+    getblogdate();
+  }, []);
 
+  return (
+    <div className='min-h-screen my-5 flex gap-8 flex-wrap justify-center rounded-xl'>
+      {getdate.map((eachitem) => (
+        <Card key={eachitem.id} postcard={eachitem} />
+      ))}
+    </div>
+  );
+};
 
-
-
+export default Page;

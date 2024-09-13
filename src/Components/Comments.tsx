@@ -1,9 +1,16 @@
 import Image from 'next/image'
 import React from 'react'
 
-const Comments = (props : any) => {
-    const{getcommit} = props
-  return (
+interface CommentProps {
+  getcommit: {
+    name: string;
+    email: string;
+    body: string;
+  };
+}
+
+const Comments: React.FC<CommentProps> = ({ getcommit }) => {
+    return (
      <div className='shadow-md p-8'>
         <div>
         <div className='flex items-center '>

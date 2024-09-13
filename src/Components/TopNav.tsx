@@ -6,7 +6,7 @@ const TopNav = () => {
 <nav className="bg-gray-800 p-4 text-lg">
     <div className="container mx-auto flex items-center">
     <div className="text-white font-bold mr-auto">
-      <Link href="/">Adeel Blogs </Link>
+      <Link href="/home">Adeel Blogs </Link>
     </div>
 
     <div className="flex space-x-10 ">
