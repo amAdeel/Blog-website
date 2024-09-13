@@ -1,36 +1,12 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+## we use useEffect 
+hum ny useeffect ka use kiya q k humara concern ya ta k jo fetching date a raha hai 
 
-## Getting Started
+## show the fetched date on ui 
+ab useEffect k trough humy date to fetch ho kar a gaya hai ab hum jahtay hai k date ui yahi frontend pr nazr aye is k liy humy useState use karni ho gi , date ko ui me update karny k liy hum useState ka istamal karty hai . 
+hum ny ak useState bana      const [getdate, setgetdate] = useState([]) humy ny usestate me empty array rahk di mean jo data aye wo is me store ho jy . ab hum apna state me date set karvaty hai , 
+jo response hum ny useEffect sy get kiya or ak varibable me store karvaya ab hum os ko state me set karvay gy tak k huamri state update hojy . function me ja kar  me ja kar hum ny write kiya setgetdate(variablename)
 
-First, run the development server:
-
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### showing date
+humari state to update ho gi hai par ab hum jhate hai k humari ui me new card add ho har new object k liy , q k jo date humay mila hai wo [{},{},{}] wo array k under multipla object hai har object k liy new card bany , to yaha par hum map ka use kary gy or har object pr new card create karvy gy ,
+        {getdate.map((items)=><Card/>)}
+hum ny main function k return me ja kar ya write kiya matlab kaya k is value ko pakro or map karo har item ko item mean object present our array and return a card on every function 
