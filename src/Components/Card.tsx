@@ -13,6 +13,10 @@ interface PostCardProps {
 }
 
 // Define the component using the props type
+//const card =(props)=> props = postcard{
+//}
+
+//### step 05 
 const Card: React.FC<PostCardProps> = ({ postcard }) => {
   return (
     <Link href={`/blogs/${postcard.id}`} className='inline-flex w-1/5 h-72'>
